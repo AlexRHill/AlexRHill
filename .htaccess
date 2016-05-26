@@ -1,0 +1,13 @@
+Options -Multiviews
+
+RewriteEngine On
+RewriteBase /
+
+# Force search engines to use alexrhill.com
+RewriteCond %{HTTP_HOST} !^alexrhill\.com$
+RewriteRule ^(.*) http://alexrhill.com/$1 [R=301,L]
+
+# Specify search friendly URLs
+RewriteRule ^HaveStipendsBeenAnnouncedYet$ /HaveStipendsBeenAnnouncedYet.html [L]
+
+# Generated for free at SearchFriendlyURLs.com
