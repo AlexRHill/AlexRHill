@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jorts</title>
+</head>
+
+<script>
+    var weatherData = {};
+
+    function roundTemperature(temperature){
+        temperature = +temperature.toFixed(0);
+        return temperature;
+    }
+
+
+    function switchUnits(){
+        if (weatherData.units == "°C"){
+            weatherData.main.temp = roundTemperature(weatherData.main.temp * 9/5 + 32);
+            weatherData.units = "°F";
+        }
+        else{
+            weatherData.main.temp = roundTemperature((weatherData.main.temp -  32) * 5/9);
+            weatherData.units = "°C";
+        }
+
+        //weatherData.temperature.innerHTML = weatherData.temperatureValue + weatherData.units + ", ";
+
+        document.getElementById("weather").innerHTML = weatherData.main.temp;
+
+        console.log(weatherData);
+    }
+
+    function getLocationAndWeather(){
+        if (window.XMLHttpRequest){
+            var xhr = new XMLHttpRequest();
+            xhr.addEventListener("load", function() {
+                weatherData = JSON.parse(xhr.responseText);
+                weatherData.units = "°F";
+
+                console.log(weatherData);
+            }, false);
+
+            xhr.addEventListener("error", function(err){
+                alert("Could not complete the request");
+            }, false);
+
+            xhr.open("GET", "http://api.openweathermap.org/data/2.5/weather?zip=48823,us&appid=172711a3069343276307d7130baa71d2&units=imperial", true);
+            xhr.send();
+
+        }
+        else{
+            alert("Unable to fetch the location and weather data.");
+        }
+    }
+
+    function test() {
+        getLocationAndWeather();
+        //document.getElementById("weather").innerHTML = weatherData.main.temp;
+        console.log(weatherData);
+    }
+
+    window.onload = getLocationAndWeather;
+
+</script>
+<body>
+    <p>testing</p>
+
+    <section>
+        <h1 id="city">Weather Web App</h1>
+        <p><a id="temperature" href="#" onclick="switchUnits(); return false;" title="Click to switch between metric and imperial units">Switch</a><span id="weather"></span></p>
+    </section>
+
+</body>
+
+<footer>
+    <p>Powered by <a href="http://openweathermap.org">Openweathermap.org</a>.</p>
+</footer>
+
+</html>
