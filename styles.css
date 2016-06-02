@@ -2,3 +2,20 @@
     text-align: center;
     font-size: 10em;
 }
+
+#spinner {
+    animation-name: spinner;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+    transform-style: preserve-3d;
+    text-align:center;
+}
+@keyframes spinner {
+    from {
+        transform: rotateZ(0deg);
+    }
+    to {
+        transform: rotateZ(-360deg);
+    }
+}
