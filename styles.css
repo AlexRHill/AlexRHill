@@ -3,6 +3,10 @@
     font-size: 10em;
 }
 
+.link{
+    text-align: center;
+}
+
 #spinner {
     animation-name: spinner;
     animation-timing-function: linear;
