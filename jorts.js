@@ -5,9 +5,9 @@ function jorts() {
             var xhr = new XMLHttpRequest();
             xhr.addEventListener("load", function() {
                 weatherData = JSON.parse(xhr.responseText);
+                document.getElementById("temp").innerHTML = "The current temperature is " + roundTemperature(weatherData.main.temp) + "°F";
+                determineJorts();
                 weatherData.units = "°F";
-
-                console.log(weatherData);
             }, false);
 
             xhr.addEventListener("error", function(err){
@@ -27,12 +27,22 @@ function jorts() {
         }
     }
 
+    function determineJorts(){
+        if(weatherData.main.temp < 60){
+            document.getElementById("jorts").innerHTML = "You should not wear jorts because the temp is " + roundTemperature(weatherData.main.temp) + "°F";
+        }
+        else{
+            document.getElementById("jorts").innerHTML = roundTemperature(weatherData.main.temp) + "°F? Perfect jorts weather!";
+        }
+    }
+
 
     document.getElementById("submit").onclick = function(event) {
+        console.log("test");
         event.preventDefault();
         var zip = document.getElementById("zip").value;
         getLocationAndWeather(zip);
-
     }
 
-    }
+
+}
