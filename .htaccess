@@ -10,5 +10,8 @@ RewriteRule ^(.*) http://alexrhill.com/$1 [R=301,L]
 # Specify search friendly URLs
 RewriteRule ^HaveStipendsBeenAnnouncedYet$ /HaveStipendsBeenAnnouncedYet.html [L]
 RewriteRule ^ShouldIWearJortsToday$ /ShouldIWearJortsToday.html [L]
+RewriteRule ^Jorts$ /ShouldIWearJortsToday.html [L]
+RewriteRule ^jorts$ /ShouldIWearJortsToday.html [L]
+RewriteRule ^MetalFortressVsShadowStitching$ /MetalFortressVsShadowStitching.html [L]
 
 # Generated for free at SearchFriendlyURLs.com
