@@ -29,3 +29,7 @@
         transform: rotateZ(-360deg);
     }
 }
+
+input#zip {
+    width: 75px;
+}

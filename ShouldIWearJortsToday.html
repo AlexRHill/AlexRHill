@@ -5,6 +5,7 @@
     <title>Jorts</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script src="jorts.js"></script>
+    <link href="styles.css" type="text/css" rel="stylesheet" />
 </head>
 
 <script>
@@ -32,9 +33,15 @@
 
     window.onload = jorts;
 
+
+    $(function(){
+        $("#header").load("header.html");
+        $("#footer").load("footer.html");
+    });
+
 </script>
 <body>
-    <h1>Should I Wear Jorts Today?</h1>
+<div id="header"></div>
 
     <form>
         <input type="text" id="zip" placeholder="Zip Code?">
@@ -43,11 +50,7 @@
 
     <p><span id="temp"></span></p>
     <p><span id="jorts"></span></p>
-    <a id="temperature" href="#" onclick="switchUnits()" title="Click to switch between metric and imperial units">Switch</a>
+    <!--<a id="temperature" href="#" onclick="switchUnits()" title="Click to switch between metric and imperial units">Switch</a>-->
+<div id="footer"></div>
 </body>
-
-<footer>
-    <p>Powered by <a href="http://openweathermap.org">Openweathermap.org</a>.</p>
-</footer>
-
 </html>
